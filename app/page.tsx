@@ -65,7 +65,10 @@ async function ShowItems({
   return (
     <>
       {data.length === 0 ? (
-        <NoItem />
+        <NoItem
+          description="Please select another category or add your own listing!"
+          title="Sorry there are no listings in this category"
+        />
       ) : (
         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-8 gap-8">
           {data.map((item) => (
