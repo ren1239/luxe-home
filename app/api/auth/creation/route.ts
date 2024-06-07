@@ -33,5 +33,5 @@ export async function GET(){
         })
     }
 
-    return NextResponse.redirect(process.env.SITE_URL as string)
+    return NextResponse.redirect('https://luxe-home-41gx.vercel.app')
 }
