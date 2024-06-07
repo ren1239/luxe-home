@@ -14,7 +14,12 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "shutterstock.com",
+        hostname: "encrypted-tbn0.gstatic.com",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
         port: "",
       },
     ],

@@ -15,6 +15,7 @@ import {
 import Link from "next/link";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { createAirbnbHome } from "../actions";
+import person from "../../public/person.png";
 
 export async function UserNav() {
   const { getUser } = getKindeServerSession();
@@ -29,15 +30,12 @@ export async function UserNav() {
           <MenuIcon className="w-6 h-6 lg:w-5 lg:h-5" />
           <Image
             className="rounded-full h-8 w-8 hidden lg:block"
-            src={
-              user?.picture ??
-              "https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2247726673.jpg"
-            }
+            src={user?.picture ?? person}
             alt="user image"
-            layout="fill"
             objectFit="cover"
-            width={32} // width corresponding to h-8
-            height={32} // height corresponding to w-8
+            height={30}
+            width={30}
+            loading="lazy"
           />
         </div>
       </DropdownMenuTrigger>
