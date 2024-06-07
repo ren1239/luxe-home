@@ -35,3 +35,5 @@ export async function GET(){
 
     return NextResponse.redirect('https://luxe-home.vercel.app')
 }
+// http://localhost:3000/
+// https://luxe-home.vercel.app
