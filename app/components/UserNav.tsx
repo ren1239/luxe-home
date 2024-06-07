@@ -6,6 +6,7 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { MenuIcon } from "lucide-react";
+import Image from "next/image";
 import {
   RegisterLink,
   LoginLink,
@@ -26,13 +27,16 @@ export async function UserNav() {
       <DropdownMenuTrigger>
         <div className="rounded-full border px-2 py-2 lg:py-1 lg:px-2 flex items-center gap-x-3">
           <MenuIcon className="w-6 h-6 lg:w-5 lg:h-5" />
-          <img
-            className="rounded-full h-8 w-8 hidden lg:block "
+          <Image
+            className="rounded-full h-8 w-8 hidden lg:block"
             src={
               user?.picture ??
               "https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2247726673.jpg"
             }
             alt="user image"
+            width={32} // width corresponding to h-8
+            height={32} // height corresponding to w-8
+            objectFit="cover" // ensures the image fits its container
           />
         </div>
       </DropdownMenuTrigger>

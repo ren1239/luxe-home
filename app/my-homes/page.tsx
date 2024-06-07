@@ -56,7 +56,7 @@ export default async function MyHomes() {
               location={item.country as string}
               price={item.price as number}
               userId={user?.id}
-              pathName="/favorites"
+              pathName="/my-homes"
               favoriteId={item.Favorite[0]?.id as string}
               isInFavoriteList={
                 (item.Favorite.length as number) > 0 ? true : false
