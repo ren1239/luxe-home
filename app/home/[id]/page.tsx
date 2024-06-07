@@ -11,6 +11,16 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import Image from "next/image";
 import Link from "next/link";
 import { unstable_noStore as noStore } from "next/cache";
+import React from "react";
+
+function formatText(text: string) {
+  return text.split("\n").map((line, index) => (
+    <React.Fragment key={index}>
+      {line}
+      <br />
+    </React.Fragment>
+  ));
+}
 
 async function getData(homeId: string) {
   noStore();
@@ -67,7 +77,7 @@ export default async function HomeRoute({
           className="rounded-lg object-cover  w-ful h-full"
         />
       </div>
-      <div className="flex justify-between gap-x-24 mt-8  flex-col">
+      <div className="flex justify-between gap-x-24 mt-8  flex-col sm:flex-row">
         <div className="w-full sm:w-2/3">
           <h3 className="text-xl font-medium">
             {country?.flag}
@@ -99,7 +109,10 @@ export default async function HomeRoute({
           <Separator className="my-7 " />
           <CategoryShowcase categoryName={data?.categoryName as string} />
           <Separator className="my-7 " />
-          <p className="text-muted-foreground"> {data?.description}</p>
+          <p className="text-muted-foreground">
+            {" "}
+            {data?.description && formatText(data.description)}
+          </p>
           <Separator className="my-7 " />
           <HomeMap locationValue={country?.value as string} />
         </div>
