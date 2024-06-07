@@ -1,14 +1,20 @@
+import { GetReservation } from "@/app/actions";
 import CategoryShowcase from "@/app/components/CategoryShowcase";
 import HomeMap from "@/app/components/HomeMap";
+import SelectCalander from "@/app/components/SelectCalander";
+import { ReservationSubmitButton } from "@/app/components/SubmitButtons";
 import prisma from "@/app/lib/db";
 import { useCountries } from "@/app/lib/getCountries";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import Image from "next/image";
+import Link from "next/link";
 
-async function getData(homeid: string) {
+async function getData(homeId: string) {
   const data = await prisma.home.findUnique({
     where: {
-      id: homeid,
+      id: homeId,
     },
     select: {
       id: true,
@@ -21,6 +27,11 @@ async function getData(homeid: string) {
       price: true,
       title: true,
       guests: true,
+      Reservation: {
+        where: {
+          homeId: homeId,
+        },
+      },
       User: {
         select: {
           profileImage: true,
@@ -40,6 +51,8 @@ export default async function HomeRoute({
   const data = await getData(params.id);
   const { getCountriesByValue } = useCountries();
   const country = getCountriesByValue(data?.country as string);
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
 
   return (
     <div className="w-[75%] mx-auto mt-10 mb-36">
@@ -52,7 +65,7 @@ export default async function HomeRoute({
           className="rounded-lg object-cover  w-ful h-full"
         />
       </div>
-      <div className="flex- justify-between gap-x-24 mt-8 ">
+      <div className="flex justify-between gap-x-24 mt-8 ">
         <div className="w-2/3">
           <h3 className="text-xl font-medium">
             {country?.flag}
@@ -88,6 +101,18 @@ export default async function HomeRoute({
           <Separator className="my-7 " />
           <HomeMap locationValue={country?.value as string} />
         </div>
+        <form action={GetReservation} className="flex flex-col items-center">
+          <input type="hidden" name="userId" value={user?.id} />
+          <input type="hidden" name="homeId" value={params.id} />
+          <SelectCalander reservation={data?.Reservation} />
+          {user?.id ? (
+            <ReservationSubmitButton />
+          ) : (
+            <Button asChild className="w-full mx-4">
+              <Link href={"/api/auth/login"}> Make a Reservation</Link>
+            </Button>
+          )}
+        </form>
       </div>
     </div>
   );

@@ -32,37 +32,37 @@ export function ListingCard({
 
   return (
     <div className="flex flex-col ">
+      <div className="relative h-72 ">
+        <Image
+          src={`https://nmiyqvoytwgkwzjevigo.supabase.co/storage/v1/object/public/images/${imagePath}`}
+          alt={"Image of House"}
+          fill
+          className="rounded-lg h-full object-cover mb-3 "
+        />
+
+        {userId && (
+          <div className="z-10 absolute top-2 right-2">
+            {isInFavoriteList ? (
+              <form action={DeleteFromFavorite}>
+                <input type="hidden" name="favoriteId" value={favoriteId} />
+                <input type="hidden" name="userId" value={userId} />
+                <input type="hidden" name="pathName" value={pathName} />
+
+                <DeleteFromFavoriteButton />
+              </form>
+            ) : (
+              <form action={AddToFavorite}>
+                <input type="hidden" name="homeId" value={homeId} />
+                <input type="hidden" name="userId" value={userId} />
+                <input type="hidden" name="pathName" value={pathName} />
+
+                <AddToFavoriteButton />
+              </form>
+            )}
+          </div>
+        )}
+      </div>
       <Link href={`/home/${homeId}`}>
-        <div className="relative h-72 ">
-          <Image
-            src={`https://nmiyqvoytwgkwzjevigo.supabase.co/storage/v1/object/public/images/${imagePath}`}
-            alt={"Image of House"}
-            fill
-            className="rounded-lg h-full object-cover mb-3 "
-          />
-
-          {userId && (
-            <div className="z-10 absolute top-2 right-2">
-              {isInFavoriteList ? (
-                <form action={DeleteFromFavorite}>
-                  <input type="hidden" name="favoriteId" value={favoriteId} />
-                  <input type="hidden" name="userId" value={userId} />
-                  <input type="hidden" name="pathName" value={pathName} />
-
-                  <DeleteFromFavoriteButton />
-                </form>
-              ) : (
-                <form action={AddToFavorite}>
-                  <input type="hidden" name="homeId" value={homeId} />
-                  <input type="hidden" name="userId" value={userId} />
-                  <input type="hidden" name="pathName" value={pathName} />
-
-                  <AddToFavoriteButton />
-                </form>
-              )}
-            </div>
-          )}
-        </div>
         <h3 className=" text-base font-medium">
           {country?.flag}
           {country?.label}
