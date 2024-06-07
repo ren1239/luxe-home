@@ -32,7 +32,6 @@ export async function UserNav() {
             className="rounded-full h-8 w-8 hidden lg:block"
             src={user?.picture ?? person}
             alt="user image"
-            objectFit="cover"
             height={30}
             width={30}
             loading="lazy"

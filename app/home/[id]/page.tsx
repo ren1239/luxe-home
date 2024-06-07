@@ -57,7 +57,7 @@ export default async function HomeRoute({
   const user = await getUser();
 
   return (
-    <div className="w-[75%] mx-auto mt-10 mb-36">
+    <div className="w-[95%] sm:w-[75%] mx-auto mt-10 mb-36">
       <h1 className=" font-semibold text-2xl mb-5">{data?.title}</h1>
       <div className="relative h-[550px]">
         <Image
@@ -67,8 +67,8 @@ export default async function HomeRoute({
           className="rounded-lg object-cover  w-ful h-full"
         />
       </div>
-      <div className="flex justify-between gap-x-24 mt-8 ">
-        <div className="w-2/3">
+      <div className="flex justify-between gap-x-24 mt-8  flex-col">
+        <div className="w-full sm:w-2/3">
           <h3 className="text-xl font-medium">
             {country?.flag}
             {country?.label}
