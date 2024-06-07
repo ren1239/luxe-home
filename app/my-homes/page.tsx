@@ -50,7 +50,7 @@ export default async function MyHomes() {
         <div className=" grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8 mt-8">
           {data.map((item) => (
             <ListingCard
-              key={item.id}
+              key={item.id as string}
               description={item.description as string}
               imagePath={item.photo as string}
               location={item.country as string}
