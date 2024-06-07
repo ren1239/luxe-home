@@ -33,5 +33,5 @@ export async function GET(){
         })
     }
 
-    return NextResponse.redirect('https://luxe-home-41gx.vercel.app')
+    return NextResponse.redirect('https://luxe-home.vercel.app')
 }
