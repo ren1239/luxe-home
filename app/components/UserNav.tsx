@@ -34,9 +34,10 @@ export async function UserNav() {
               "https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2247726673.jpg"
             }
             alt="user image"
+            layout="fill"
+            objectFit="cover"
             width={32} // width corresponding to h-8
             height={32} // height corresponding to w-8
-            objectFit="cover" // ensures the image fits its container
           />
         </div>
       </DropdownMenuTrigger>

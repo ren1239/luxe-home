@@ -12,6 +12,11 @@ const nextConfig = {
         hostname: "nmiyqvoytwgkwzjevigo.supabase.co",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "shutterstock.com",
+        port: "",
+      },
     ],
   },
 };
