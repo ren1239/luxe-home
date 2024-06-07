@@ -46,24 +46,21 @@ export default async function MyHomes() {
         />
       ) : (
         <div className=" grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8 mt-8">
-          {" "}
           {data.map((item) => (
-            <div>
-              <ListingCard
-                key={item.id}
-                description={item.description as string}
-                imagePath={item.photo as string}
-                location={item.country as string}
-                price={item.price as number}
-                userId={user?.id}
-                pathName="/favorites"
-                favoriteId={item.Favorite[0]?.id as string}
-                isInFavoriteList={
-                  (item.Favorite.length as number) > 0 ? true : false
-                }
-                homeId={item.id as string}
-              />{" "}
-            </div>
+            <ListingCard
+              key={item.id}
+              description={item.description as string}
+              imagePath={item.photo as string}
+              location={item.country as string}
+              price={item.price as number}
+              userId={user?.id}
+              pathName="/favorites"
+              favoriteId={item.Favorite[0]?.id as string}
+              isInFavoriteList={
+                (item.Favorite.length as number) > 0 ? true : false
+              }
+              homeId={item.id as string}
+            />
           ))}
         </div>
       )}
